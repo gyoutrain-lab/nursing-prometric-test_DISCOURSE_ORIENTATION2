@@ -21,7 +21,7 @@
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow-lg font-black text-slate-950 text-lg">G</div>
             <div>
                 <h1 class="text-xl font-extrabold text-teal-400 tracking-wide">SCFHS Daily Nursing Care 100</h1>
-                <p class="text-xs text-slate-400">Real-Time Arcade Engine &bull; 100 Daily Ward Treatment Cases &bull; Safety &amp; Procedures</p>
+                <p class="text-xs text-slate-400">Real-Time Arcade Engine &bull; Uniform Thumbnails &bull; Score Deduction on Error</p>
             </div>
         </div>
         <div class="flex items-center space-x-4">
@@ -63,7 +63,7 @@
             <div class="mb-4">
                 <p class="text-xs text-slate-400 font-semibold mb-3">EXECUTE DAILY NURSING TREATMENT PER SCFHS STANDARD (Defuse STR Traps):</p>
                 <div id="action-buttons-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Dynamic action buttons -->
+                    <!-- Dynamic action buttons with uniform thumbnail -->
                 </div>
             </div>
 
@@ -87,7 +87,7 @@
         SCFHS Daily Ward Nursing Care 100 &bull; True Real-Time Arcade Engine &bull; GyouTrain Lab
     </footer>
 
-    <!-- Game Engine Script with 100 Daily Life Nursing Cases -->
+    <!-- Game Engine Script with Uniform Thumbnails & Score Deduction -->
     <script>
         let score = 200;
         let currentIdx = 0;
@@ -95,111 +95,109 @@
         let timerInterval = null;
         let isResolved = false;
 
-        // 100 Independent Daily Life Nursing Care Cases based on SCFHS Standards, Safety First, and Linguistic Traps
         const cases100 = [
             {
                 id: 1, ward: "Infection Control", principle: "Safety First",
                 statement: "Daily Ward Duty: How should a nurse perform hand hygiene prior to touching a patient?",
                 actions: [
-                    { text: "⚡ FRICTION: Rub hands together dynamically using friction for mechanical removal", correct: true, feedback: "🎉 CORRECT! Mechanical friction is the most significant factor in removing transient microorganisms." },
-                    { text: "⚠️ SOAP TYPE: Rely exclusively on luxury antimicrobial soap without rubbing", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Chemical soap alone without mechanical friction fails hygiene standards." },
-                    { text: "⚠️ WARM WATER: Rinse hands under hot water without friction time", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Temperature misconception replacing mechanical action." },
-                    { text: "⚠️ QUICK AIR: Wave hands under a blow dryer for 2 seconds", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Secondary drying step confusion." }
+                    { text: "Rub hands together dynamically using friction for mechanical removal", correct: true, feedback: "🎉 CORRECT! Mechanical friction is the most significant factor in removing transient microorganisms." },
+                    { text: "Rely exclusively on luxury antimicrobial soap without rubbing", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Chemical soap alone without mechanical friction fails hygiene standards." },
+                    { text: "Rinse hands under hot water without friction time", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Temperature misconception replacing mechanical action." },
+                    { text: "Wave hands under a blow dryer for 2 seconds", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Secondary drying step confusion." }
                 ]
             },
             {
                 id: 2, ward: "Vascular Access", principle: "Linguistic Trap",
                 statement: "Daily Ward Duty: A patient's IV site is swollen and tender. How do you distinguish infiltration from phlebitis?",
                 actions: [
-                    { text: "⚠️ PHLEBITIS: Assume tenderness means phlebitis and apply warm packs", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Linguistic matching—associating pain directly with phlebitis." },
-                    { text: "⚡ INFILTRATION: Stop infusion and assess for coolness, pallor, and edema", correct: true, feedback: "🎉 CORRECT! Infiltration features coolness and pallor, whereas phlebitis features heat and a palpable cord." },
-                    { text: "⚠️ SEPSIS: Treat immediately as systemic blood infection", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Premature systemic escalation." },
-                    { text: "⚠️ EMBOLISM: Administer emergency oxygen for vascular blockage", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Overestimation of acute catastrophe." }
+                    { text: "Assume tenderness means phlebitis and apply warm packs", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Linguistic matching—associating pain directly with phlebitis." },
+                    { text: "Stop infusion and assess for coolness, pallor, and edema", correct: true, feedback: "🎉 CORRECT! Infiltration features coolness and pallor, whereas phlebitis features heat and a palpable cord." },
+                    { text: "Treat immediately as systemic blood infection", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Premature systemic escalation." },
+                    { text: "Administer emergency oxygen for vascular blockage", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Overestimation of acute catastrophe." }
                 ]
             },
             {
                 id: 3, ward: "Respiratory Care", principle: "Tie-Breaker",
                 statement: "Daily Ward Duty: How should a nurse position a patient experiencing sudden shortness of breath (dyspnea)?",
                 actions: [
-                    { text: "⚠️ SUPINE: Lay flat horizontally to let the patient rest comfortably", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Assuming flat resting posture promotes recovery." },
-                    { text: "⚡ HIGH-FOWLER'S: Elevate head of bed into High-Fowler's position", correct: true, feedback: "🎉 CORRECT! High-Fowler's drops the diaphragm via gravity, maximizing chest expansion." },
-                    { text: "⚠️ TRENDELENBURG: Tilt head downward to increase cerebral blood flow", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Dangerous gravity shift worsening lung compression." },
-                    { text: "⚠️ PRONE: Position flat on stomach across chest wall", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Restricts anterior chest wall excursion." }
+                    { text: "Lay flat horizontally to let the patient rest comfortably", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Assuming flat resting posture promotes recovery." },
+                    { text: "Elevate head of bed into High-Fowler's position", correct: true, feedback: "🎉 CORRECT! High-Fowler's drops the diaphragm via gravity, maximizing chest expansion." },
+                    { text: "Tilt head downward to increase cerebral blood flow", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Dangerous gravity shift worsening lung compression." },
+                    { text: "Position flat on stomach across chest wall", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Restricts anterior chest wall excursion." }
                 ]
             },
             {
                 id: 4, ward: "Medication Administration", principle: "Safety First",
                 statement: "Daily Ward Duty: What is the mandatory rule when administering an oral medication to an alert patient?",
                 actions: [
-                    { text: "⚠️ LEAVE AT BEDSIDE: Leave pills on the bedside table for the patient to take later", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unattended medications violate direct administration safety rules." },
-                    { text: "⚡ STAY & WITNESS: Remain at the bedside until the patient swallows and verify ingestion", correct: true, feedback: "🎉 CORRECT! Nurses must verify medication ingestion before leaving the bedside." },
-                    { text: "⚠️ CRUSH ALL: Crush all pills together into water without checking compatibility", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unsafe crushing alters sustained-release kinetics." },
-                    { text: "⚠️ ASK FAMILY: Give medications to visiting family members to administer", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Delegation of direct nursing liability." }
+                    { text: "Leave pills on the bedside table for the patient to take later", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unattended medications violate direct administration safety rules." },
+                    { text: "Remain at the bedside until the patient swallows and verify ingestion", correct: true, feedback: "🎉 CORRECT! Nurses must verify medication ingestion before leaving the bedside." },
+                    { text: "Crush all pills together into water without checking compatibility", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unsafe crushing alters sustained-release kinetics." },
+                    { text: "Give medications to visiting family members to administer", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Delegation of direct nursing liability." }
                 ]
             },
             {
                 id: 5, ward: "Wound Care", principle: "Linguistic Trap",
                 statement: "Daily Ward Duty: How should a clean granulating pressure ulcer be dressed during daily care?",
                 actions: [
-                    { text: "⚠️ DRY GAUZE: Pack tightly with dry gauze to dry up all wound exudate", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Dry gauze adheres to and destroys fragile granulation tissue." },
-                    { text: "⚡ MOIST DRESSING: Maintain a moist wound environment using hydrogel or saline dressings", correct: true, feedback: "🎉 CORRECT! Moist wound beds accelerate epithelial cell migration and healing." },
-                    { text: "⚠️ OPEN AIR: Leave wound completely open to air to form a hard scab", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Scab formation delays deep tissue repair." },
-                    { text: "⚠️ IODINE: Pour povidone-iodine solution directly into the wound bed", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Cytotoxic iodine destroys healthy growing cells." }
+                    { text: "Pack tightly with dry gauze to dry up all wound exudate", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Dry gauze adheres to and destroys fragile granulation tissue." },
+                    { text: "Maintain a moist wound environment using hydrogel or saline dressings", correct: true, feedback: "🎉 CORRECT! Moist wound beds accelerate epithelial cell migration and healing." },
+                    { text: "Leave wound completely open to air to form a hard scab", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Scab formation delays deep tissue repair." },
+                    { text: "Pour povidone-iodine solution directly into the wound bed", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Cytotoxic iodine destroys healthy growing cells." }
                 ]
             },
             {
                 id: 6, ward: "Blood Transfusion", principle: "Tie-Breaker",
                 statement: "Daily Ward Duty: What is required right before starting a packed red blood cell transfusion?",
                 actions: [
-                    { text: "⚠️ DESK CHECK: Check blood bag label alone at the nurses' station desk", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Single-person remote checks lead to mismatched transfusions." },
-                    { text: "⚡ DUAL CHECK: Perform independent dual-nurse bedside verification of patient ID and unit", correct: true, feedback: "🎉 CORRECT! Two-nurse bedside cross-checking prevents clerical mismatch errors." },
-                    { text: "⚠️ ASK PATIENT: Ask the patient to state their blood group from memory", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unreliable patient recall." },
-                    { text: "⚠️ TRUST SLIP: Trust blood bank delivery form without secondary checks", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Violation of safety verification standards." }
+                    { text: "Check blood bag label alone at the nurses' station desk", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Single-person remote checks lead to mismatched transfusions." },
+                    { text: "Perform independent dual-nurse bedside verification of patient ID and unit", correct: true, feedback: "🎉 CORRECT! Two-nurse bedside cross-checking prevents clerical mismatch errors." },
+                    { text: "Ask the patient to state their blood group from memory", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unreliable patient recall." },
+                    { text: "Trust blood bank delivery form without secondary checks", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Violation of safety verification standards." }
                 ]
             },
             {
                 id: 7, ward: "Fluid Balance", principle: "Safety First",
                 statement: "Daily Ward Duty: What is the most accurate daily indicator of fluid balance changes in a heart failure patient?",
                 actions: [
-                    { text: "⚠️ I/O LOGS: Rely entirely on routine intake and output shift paperwork", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: I/O logs are prone to omission and spillage errors." },
-                    { text: "⚡ DAILY WEIGHT: Obtain daily morning weight on the same scale under identical conditions", correct: true, feedback: "🎉 CORRECT! 1 kg of weight gain equals 1 liter of fluid retention, making daily weights most objective." },
-                    { text: "⚠️ SKIN TURGOR: Assess skin turgor over the sternum every shift", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Subjective and unreliable in edema." },
-                    { text: "⚠️ BLOOD PRESSURE: Monitor systemic blood pressure hourly", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Hemodynamics compensate until late stages." }
+                    { text: "Rely entirely on routine intake and output shift paperwork", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: I/O logs are prone to omission and spillage errors." },
+                    { text: "Obtain daily morning weight on the same scale under identical conditions", correct: true, feedback: "🎉 CORRECT! 1 kg of weight gain equals 1 liter of fluid retention, making daily weights most objective." },
+                    { text: "Assess skin turgor over the sternum every shift", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Subjective and unreliable in edema." },
+                    { text: "Monitor systemic blood pressure hourly", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Hemodynamics compensate until late stages." }
                 ]
             },
             {
                 id: 8, ward: "Fall Prevention", principle: "Linguistic Trap",
                 statement: "Daily Ward Duty: A confused elderly patient keeps trying to get out of bed unassisted. What is the safe daily intervention?",
                 actions: [
-                    { text: "⚠️ 4 RAILS: Apply full four-side physical bed rails up to lock patient in", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Equating physical barrier restraint with safety." },
-                    { text: "⚡ LOW BED & ALARM: Place bed in lowest position, use bed-exit alarm, and increase checks", correct: true, feedback: "🎉 CORRECT! Four rails constitute a restraint hazard; environmental safety takes precedence." },
-                    { text: "⚠️ SEDATIVE: Administer unprescribed hypnotic medication to force sleep", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Chemical restraint misuse." },
-                    { text: "⚠️ SHEET TIE: Tie a bed sheet tightly across patient chest", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unlawful physical restraint practice." }
+                    { text: "Apply full four-side physical bed rails up to lock patient in", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Equating physical barrier restraint with safety." },
+                    { text: "Place bed in lowest position, use bed-exit alarm, and increase checks", correct: true, feedback: "🎉 CORRECT! Four rails constitute a restraint hazard; environmental safety takes precedence." },
+                    { text: "Administer unprescribed hypnotic medication to force sleep", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Chemical restraint misuse." },
+                    { text: "Tie a bed sheet tightly across patient chest", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unlawful physical restraint practice." }
                 ]
             },
             {
                 id: 9, ward: "Nasogastric Care", principle: "Tie-Breaker",
                 statement: "Daily Ward Duty: How must a nurse verify NG tube placement before administering a tube feeding?",
                 actions: [
-                    { text: "⚠️ AIR AUSCULTATION: Instill 30 mL air while listening over epigastrium with stethoscope", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Auscultation air is a WHO-disproven method." },
-                    { text: "⚡ X-RAY OR PH: Verify placement via radiographic chest X-ray or aspirate pH testing", correct: true, feedback: "🎉 CORRECT! Direct biochemical or radiological verification prevents lethal pulmonary instillation." },
-                    { text: "⚠️ WARM FORMULA: Warm the feeding formula to body temperature", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Comfort measure, not safety verification." },
-                    { text: "⚠️ ELEVATE BED: Elevate head of bed by 15 degrees", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Insufficient elevation angle." }
+                    { text: "Instill 30 mL air while listening over epigastrium with stethoscope", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Auscultation air is a WHO-disproven method." },
+                    { text: "Verify placement via radiographic chest X-ray or aspirate pH testing", correct: true, feedback: "🎉 CORRECT! Direct biochemical or radiological verification prevents lethal pulmonary instillation." },
+                    { text: "Warm the feeding formula to body temperature", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Comfort measure, not safety verification." },
+                    { text: "Elevate head of bed by 15 degrees", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Insufficient elevation angle." }
                 ]
             },
             {
                 id: 10, ward: "Infection Control", principle: "Safety First",
                 statement: "Daily Ward Duty: What is required after removing clean gloves following patient care?",
                 actions: [
-                    { text: "⚠️ NO WASH: Proceed immediately to computer charting without hand hygiene", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Assuming gloves provide absolute barrier protection." },
-                    { text: "⚡ HAND HYGIENE: Perform hand hygiene immediately after glove removal", correct: true, feedback: "🎉 CORRECT! Microscopic glove micro-perforations allow pathogen transfer; hand hygiene removes flora." },
-                    { text: "⚠️ FRESH GLOVES: Apply a fresh pair of gloves directly over bare hands", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unhygienic layering practice." },
-                    { text: "⚠️ ALCOHOL WIPE: Wipe hands with an alcohol pad while wearing gloves", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Ineffective disinfection." }
+                    { text: "Proceed immediately to computer charting without hand hygiene", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Assuming gloves provide absolute barrier protection." },
+                    { text: "Perform hand hygiene immediately after glove removal", correct: true, feedback: "🎉 CORRECT! Microscopic glove micro-perforations allow pathogen transfer; hand hygiene removes flora." },
+                    { text: "Apply a fresh pair of gloves directly over bare hands", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Unhygienic layering practice." },
+                    { text: "Wipe hands with an alcohol pad while wearing gloves", correct: false, feedback: "💥 BAM! (-15 Points) STR Trap: Ineffective disinfection." }
                 ]
             }
         ];
 
-        // Fill remaining cases up to 100 dynamically with routine daily nursing care scenarios
         for (let i = 11; i <= 100; i++) {
             cases100.push({
                 id: i,
@@ -207,10 +205,10 @@
                 principle: i % 3 === 0 ? "Safety First" : (i % 3 === 1 ? "Linguistic Trap" : "Tie-Breaker"),
                 statement: `Daily Ward Duty: How should a nurse execute daily clinical nursing procedure for Case #${i} according to SCFHS standards?`,
                 actions: [
-                    { text: `⚡ SCFHS STANDARD: Execute evidence-based nursing care and verify clinical parameters`, correct: true, feedback: `🎉 CORRECT! Adhering to validated SCFHS nursing procedures ensures patient safety for Case #${i}.` },
-                    { text: `⚠️ RUSH SHORTCUT: Bypass double-checks to save time during busy shift hours`, correct: false, feedback: `💥 BAM! (-15 Points) STR Trap: Taking shortcuts violates core nursing safety standards.` },
-                    { text: `⚠️ ASSUMPTION BIAS: Rely on informal word-of-mouth handover without chart review`, correct: false, feedback: `💥 BAM! (-15 Points) STR Trap: Failing to verify baseline chart orders.` },
-                    { text: `⚠️ DELAYED DOCUMENTATION: Postpone charting and patient assessment until end of shift`, correct: false, feedback: `💥 BAM! (-15 Points) STR Trap: Delayed clinical recording risks missed deterioration.` }
+                    { text: `Execute evidence-based nursing care and verify clinical parameters`, correct: true, feedback: `🎉 CORRECT! Adhering to validated SCFHS nursing procedures ensures patient safety for Case #${i}.` },
+                    { text: `Bypass double-checks to save time during busy shift hours`, correct: false, feedback: `💥 BAM! (-15 Points) STR Trap: Taking shortcuts violates core nursing safety standards.` },
+                    { text: `Rely on informal word-of-mouth handover without chart review`, correct: false, feedback: `💥 BAM! (-15 Points) STR Trap: Failing to verify baseline chart orders.` },
+                    { text: `Postpone charting and patient assessment until end of shift`, correct: false, feedback: `💥 BAM! (-15 Points) STR Trap: Delayed clinical recording risks missed deterioration.` }
                 ]
             });
         }
@@ -308,7 +306,15 @@
             shuffledActions.forEach((act) => {
                 const btn = document.createElement('button');
                 btn.className = "p-4 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-800 hover:border-teal-500 transition-all text-left text-xs sm:text-sm font-semibold flex items-center justify-between group shadow-md active:scale-95";
-                btn.innerHTML = `<span>${act.text}</span>`;
+                
+                // Uniform thumbnail applied to all options
+                btn.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-teal-950 border border-teal-800 flex items-center justify-center text-teal-400 font-bold shrink-0">🏥</div>
+                        <span>${act.text}</span>
+                    </div>
+                `;
+                
                 btn.onclick = () => executeAction(act, btn, shuffledActions);
                 container.appendChild(btn);
             });
